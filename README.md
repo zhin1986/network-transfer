@@ -1,4 +1,32 @@
+**Two Linode API endpoints are involved:**
+
+[https://techdocs.akamai.com/linode-api/reference/get-tagged-objects](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects)
+[https://techdocs.akamai.com/linode-api/reference/get-linode-transfer](https://techdocs.akamai.com/linode-api/reference/get-linode-transfer)
+
+**1. Obtain Instance IDs under a Tag:**
+
+  * Invoke the `get_tagged_instance_ids` function to retrieve all instance IDs associated with the "ZX-TEST" tag.
+  * Construct the API URL, initiate a request, and verify the response status code.
+  * On successful request, parse the response data, extract each instance's ID, store them in a list, and return this list.
+
+**2. Retrieve Instance Traffic and Calculate Total:**
+
+  * Call the `get_total_used_gb` function with the list of instance IDs as an argument.
+  * Iterate over each instance ID, construct the corresponding API URL, and send a request.
+  * If the request succeeds, convert the traffic usage from bytes to GB, display the usage for the instance, and accumulate it into the total traffic.
+  * If the request fails, output the corresponding error message.
+
+**3. Main Function:**
+
+  * Call `get_tagged_instance_ids` to obtain the list of instance IDs.
+  * If the list is obtained successfully, invoke `get_total_used_gb` to get the total traffic usage and print it.
+
+
 # network-transfer
+主要涉及2个Linode API接口：
+https://techdocs.akamai.com/linode-api/reference/get-tagged-objects
+https://techdocs.akamai.com/linode-api/reference/get-linode-transfer
+
 ## 1. 获取标签下的实例 ID：
 + 调用 get_tagged_instance_ids 函数，根据标签 "ZX-TEST" 获取所有实例 ID。
 + 构建 API URL 并发送请求，检查响应状态码。
